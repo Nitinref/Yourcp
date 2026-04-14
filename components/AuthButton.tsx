@@ -30,9 +30,9 @@ export function AuthButton() {
         <div className="text-sm font-medium text-slate-100">
           {session.user.name ?? "Signed in"}
         </div>
-        <div className="text-xs text-slate-400">{session.user.email}</div>
+        <div className="text-xs text-slate-500">{session.user.email}</div>
       </div>
-      <Button variant="ghost" onClick={() => void signOut()}>
+      <Button variant="ghost" onClick={() => void signOut()} className="text-slate-400 hover:text-rose-300">
         <LogOut className="h-4 w-4" />
         Sign Out
       </Button>

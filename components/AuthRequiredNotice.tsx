@@ -12,15 +12,15 @@ export function AuthRequiredNotice({
   description?: string;
 }) {
   return (
-    <div className="glass-panel flex flex-col items-center gap-4 p-8 text-center">
-      <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-3">
-        <LockKeyhole className="h-5 w-5 text-cyan-300" />
+    <div className="glass-panel flex flex-col items-center gap-5 p-10 text-center animate-scale-in">
+      <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-4 animate-float">
+        <LockKeyhole className="h-6 w-6 text-cyan-300" />
       </div>
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-white">{title}</h2>
-        <p className="max-w-xl text-sm text-slate-400">{description}</p>
+        <h2 className="text-2xl font-bold text-white">{title}</h2>
+        <p className="max-w-xl text-sm leading-relaxed text-slate-400">{description}</p>
       </div>
-      <Button onClick={() => void signIn("google")}>Sign In With Google</Button>
+      <Button onClick={() => void signIn("google")} size="lg">Sign In With Google</Button>
     </div>
   );
 }
