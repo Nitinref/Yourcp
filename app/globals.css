@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  border-color: #1f2937;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(6, 182, 212, 0.1), transparent 25%),
+    linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(3, 7, 18, 1));
+  color: #f9fafb;
+  font-family: "Satoshi", "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #164e63;
+  border-radius: 999px;
+}
+
+.glass-panel {
+  @apply rounded-2xl border border-slate-800/80 bg-slate-900/75 backdrop-blur;
+}
+
+.glow-ring {
+  box-shadow: 0 0 0 1px rgba(6, 182, 212, 0.18), 0 0 24px rgba(6, 182, 212, 0.1);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
