@@ -121,132 +121,158 @@ export function StatsPanel({ questions }: { questions: Question[] }) {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {statCards.map((card) => (
-          <Card key={card.title} className="glow-ring">
+        {statCards.map((card, index) => (
+          <Card
+            key={card.title}
+            className={`group glow-ring transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_32px_rgba(6,182,212,0.15)] animate-fade-in-up delay-${(index + 1) * 100}`}
+          >
             <CardHeader>
               <CardDescription>{card.title}</CardDescription>
-              <CardTitle className="text-2xl">{card.value}</CardTitle>
+              <CardTitle className="text-2xl font-extrabold">{card.value}</CardTitle>
             </CardHeader>
           </Card>
         ))}
       </div>
 
       <div className="grid gap-6 xl:grid-cols-2">
-        <ChartCard
-          title="Progress Status"
-          description="Solved vs attempted vs unsolved"
-        >
-          <ResponsiveContainer width="100%" height={260}>
-            <PieChart>
-              <Pie
-                data={statusData}
-                dataKey="value"
-                nameKey="name"
-                innerRadius={68}
-                outerRadius={100}
-                paddingAngle={3}
-              >
-                {statusData.map((entry, index) => (
-                  <Cell
-                    key={entry.name}
-                    fill={chartColors[index % chartColors.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-        </ChartCard>
+        <div className="animate-fade-in delay-100">
+          <ChartCard
+            title="Progress Status"
+            description="Solved vs attempted vs unsolved"
+          >
+            <ResponsiveContainer width="100%" height={260}>
+              <PieChart>
+                <Pie
+                  data={statusData}
+                  dataKey="value"
+                  nameKey="name"
+                  innerRadius={68}
+                  outerRadius={100}
+                  paddingAngle={3}
+                >
+                  {statusData.map((entry, index) => (
+                    <Cell
+                      key={entry.name}
+                      fill={chartColors[index % chartColors.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip
+                  contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", borderRadius: "12px", color: "#f1f5f9" }}
+                />
+              </PieChart>
+            </ResponsiveContainer>
+          </ChartCard>
+        </div>
 
-        <ChartCard
-          title="Difficulty Split"
-          description="Easy, medium, and hard coverage"
-        >
-          <ResponsiveContainer width="100%" height={260}>
-            <PieChart>
-              <Pie data={difficultyData} dataKey="value" nameKey="name" outerRadius={105}>
-                {difficultyData.map((entry, index) => (
-                  <Cell
-                    key={entry.name}
-                    fill={chartColors[index % chartColors.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-        </ChartCard>
+        <div className="animate-fade-in delay-200">
+          <ChartCard
+            title="Difficulty Split"
+            description="Easy, medium, and hard coverage"
+          >
+            <ResponsiveContainer width="100%" height={260}>
+              <PieChart>
+                <Pie data={difficultyData} dataKey="value" nameKey="name" outerRadius={105}>
+                  {difficultyData.map((entry, index) => (
+                    <Cell
+                      key={entry.name}
+                      fill={chartColors[index % chartColors.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip
+                  contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", borderRadius: "12px", color: "#f1f5f9" }}
+                />
+              </PieChart>
+            </ResponsiveContainer>
+          </ChartCard>
+        </div>
 
+        <div className="animate-fade-in delay-300">
+          <ChartCard
+            title="Questions by Platform"
+            description="Where you practice most often"
+          >
+            <ResponsiveContainer width="100%" height={280}>
+              <BarChart data={platformData}>
+                <XAxis
+                  dataKey="name"
+                  stroke="#94a3b8"
+                  tickLine={false}
+                  axisLine={false}
+                  fontSize={12}
+                />
+                <YAxis stroke="#94a3b8" tickLine={false} axisLine={false} fontSize={12} />
+                <Tooltip
+                  contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", borderRadius: "12px", color: "#f1f5f9" }}
+                />
+                <Bar dataKey="value" radius={[12, 12, 0, 0]}>
+                  {platformData.map((entry, index) => (
+                    <Cell
+                      key={entry.name}
+                      fill={chartColors[index % chartColors.length]}
+                    />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </ChartCard>
+        </div>
+
+        <div className="animate-fade-in delay-400">
+          <ChartCard title="Top Topics" description="Your most practiced concepts">
+            <ResponsiveContainer width="100%" height={280}>
+              <BarChart data={topicData}>
+                <XAxis
+                  dataKey="name"
+                  stroke="#94a3b8"
+                  tickLine={false}
+                  axisLine={false}
+                  fontSize={12}
+                />
+                <YAxis stroke="#94a3b8" tickLine={false} axisLine={false} fontSize={12} />
+                <Tooltip
+                  contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", borderRadius: "12px", color: "#f1f5f9" }}
+                />
+                <Bar dataKey="value" fill="#06b6d4" radius={[12, 12, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </ChartCard>
+        </div>
+      </div>
+
+      <div className="animate-fade-in delay-500">
         <ChartCard
-          title="Questions by Platform"
-          description="Where you practice most often"
+          title="Activity Over Time"
+          description="Questions added during the last 14 days"
         >
           <ResponsiveContainer width="100%" height={280}>
-            <BarChart data={platformData}>
+            <LineChart data={lineData}>
               <XAxis
-                dataKey="name"
+                dataKey="date"
                 stroke="#94a3b8"
                 tickLine={false}
                 axisLine={false}
+                fontSize={12}
               />
-              <YAxis stroke="#94a3b8" tickLine={false} axisLine={false} />
-              <Tooltip />
-              <Bar dataKey="value" radius={[12, 12, 0, 0]}>
-                {platformData.map((entry, index) => (
-                  <Cell
-                    key={entry.name}
-                    fill={chartColors[index % chartColors.length]}
-                  />
-                ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        </ChartCard>
-
-        <ChartCard title="Top Topics" description="Your most practiced concepts">
-          <ResponsiveContainer width="100%" height={280}>
-            <BarChart data={topicData}>
-              <XAxis
-                dataKey="name"
-                stroke="#94a3b8"
-                tickLine={false}
-                axisLine={false}
+              <YAxis stroke="#94a3b8" tickLine={false} axisLine={false} fontSize={12} />
+              <Tooltip
+                contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", borderRadius: "12px", color: "#f1f5f9" }}
               />
-              <YAxis stroke="#94a3b8" tickLine={false} axisLine={false} />
-              <Tooltip />
-              <Bar dataKey="value" fill="#06b6d4" radius={[12, 12, 0, 0]} />
-            </BarChart>
+              <Line
+                type="monotone"
+                dataKey="count"
+                stroke="#06b6d4"
+                strokeWidth={3}
+                dot={{ r: 4, fill: "#22d3ee" }}
+                activeDot={{ r: 7, fill: "#06b6d4", stroke: "#22d3ee", strokeWidth: 2 }}
+              />
+            </LineChart>
           </ResponsiveContainer>
         </ChartCard>
       </div>
-
-      <ChartCard
-        title="Activity Over Time"
-        description="Questions added during the last 14 days"
-      >
-        <ResponsiveContainer width="100%" height={280}>
-          <LineChart data={lineData}>
-            <XAxis
-              dataKey="date"
-              stroke="#94a3b8"
-              tickLine={false}
-              axisLine={false}
-            />
-            <YAxis stroke="#94a3b8" tickLine={false} axisLine={false} />
-            <Tooltip />
-            <Line
-              type="monotone"
-              dataKey="count"
-              stroke="#06b6d4"
-              strokeWidth={3}
-              dot={{ r: 4, fill: "#22d3ee" }}
-              activeDot={{ r: 6 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </ChartCard>
     </div>
   );
 }

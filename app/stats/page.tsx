@@ -34,19 +34,27 @@ export default function StatsPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight text-white">Stats</h1>
-        <p className="text-slate-400">
+    <div className="space-y-8">
+      <div className="animate-fade-in">
+        <h1 className="text-3xl font-extrabold tracking-tight text-white gradient-text">Stats</h1>
+        <p className="mt-1 text-slate-400">
           Live charts based on the questions saved in your Postgres database.
         </p>
       </div>
 
       {status === "loading" ? (
-        <div className="glass-panel p-6 text-sm text-slate-400">Checking session...</div>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {Array.from({ length: 4 }, (_, i) => (
+            <div key={i} className="skeleton h-24 w-full" />
+          ))}
+        </div>
       ) : null}
       {isLoading ? (
-        <div className="glass-panel p-6 text-sm text-slate-400">Loading stats...</div>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {Array.from({ length: 4 }, (_, i) => (
+            <div key={i} className="skeleton h-24 w-full" />
+          ))}
+        </div>
       ) : null}
       {error ? (
         <div className="glass-panel border-rose-500/20 p-6 text-sm text-rose-300">

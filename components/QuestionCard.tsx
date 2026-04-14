@@ -32,7 +32,7 @@ export function QuestionCard({
   onViewHints
 }: QuestionCardProps) {
   return (
-    <Card className="overflow-hidden transition hover:-translate-y-1 hover:border-cyan-500/40">
+    <Card className="group/card overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-500/40 hover:shadow-[0_0_32px_rgba(6,182,212,0.1)]">
       <CardContent className="space-y-4 p-5">
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">
@@ -130,11 +130,11 @@ export function QuestionCard({
           placeholder="Keep concise notes, traps, and reminders here..."
         />
 
-        <div className="flex flex-col gap-3 border-t border-slate-800 pt-4 md:flex-row md:items-center md:justify-between">
-          <div className="text-sm text-slate-400">
+        <div className="flex flex-col gap-3 border-t border-slate-800/60 pt-4 md:flex-row md:items-center md:justify-between">
+          <div className="text-xs text-slate-500">
             Added {formatDate(question.dateAdded)} · Complexity {question.timeComplexity}
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5">
             <Button variant="outline" size="sm" onClick={() => onViewHints(question)}>
               <Sparkles className="h-4 w-4" />
               View Hints

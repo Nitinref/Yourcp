@@ -56,18 +56,22 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="space-y-8">
-      <section className="glass-panel overflow-hidden p-6 md:p-8">
-        <div className="grid gap-8 xl:grid-cols-[1.4fr,0.9fr]">
-          <div className="space-y-5">
-            <div className="inline-flex rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-1 text-xs font-medium uppercase tracking-[0.25em] text-cyan-200">
+    <div className="space-y-10">
+      <section className="relative glass-panel overflow-hidden p-6 md:p-10">
+        {/* Decorative orb */}
+        <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-cyan-500/8 blur-[80px]" />
+
+        <div className="relative grid gap-8 xl:grid-cols-[1.4fr,0.9fr]">
+          <div className="space-y-6 animate-fade-in">
+            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-cyan-200">
+              <Target className="h-3 w-3" />
               Dashboard
             </div>
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tight text-white md:text-5xl">
+            <div className="space-y-3">
+              <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-5xl gradient-text leading-[1.1]">
                 Build a cleaner record of how you practice.
               </h1>
-              <p className="max-w-2xl text-slate-300">
+              <p className="max-w-2xl text-slate-300 leading-relaxed">
                 Your questions are stored in Postgres, your stats are live, and your
                 tracker is ready for every new contest problem or interview drill.
               </p>
@@ -77,7 +81,7 @@ export default function DashboardPage() {
                 value={quickInput}
                 onChange={(event) => setQuickInput(event.target.value)}
                 placeholder="Paste a problem URL or type a title to quick-add"
-                className="h-12 flex-1 rounded-2xl border border-slate-800 bg-slate-950/80 px-4 text-sm text-slate-100"
+                className="h-12 flex-1 rounded-2xl border border-slate-800 bg-slate-950/80 px-4 text-sm text-slate-100 transition-colors focus:border-cyan-500/40 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
                 disabled={status !== "authenticated"}
               />
               <AddQuestionModal
@@ -92,9 +96,9 @@ export default function DashboardPage() {
             </div>
             <div className="flex flex-wrap gap-3">
               <Link href="/tracker">
-                <Button variant="outline">
+                <Button variant="outline" className="group">
                   Open Tracker
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/stats">
@@ -104,18 +108,21 @@ export default function DashboardPage() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            {statCards.map((stat) => {
+            {statCards.map((stat, index) => {
               const Icon = stat.icon;
               return (
-                <Card key={stat.label} className="glow-ring">
+                <Card
+                  key={stat.label}
+                  className={`group glow-ring transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_32px_rgba(6,182,212,0.15)] animate-fade-in-up delay-${(index + 1) * 100}`}
+                >
                   <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
                       <CardDescription>{stat.label}</CardDescription>
-                      <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/10 p-2">
+                      <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/10 p-2 transition-transform duration-300 group-hover:scale-110">
                         <Icon className="h-4 w-4 text-cyan-300" />
                       </div>
                     </div>
-                    <CardTitle className="text-3xl">{stat.value}</CardTitle>
+                    <CardTitle className="text-3xl font-extrabold">{stat.value}</CardTitle>
                   </CardHeader>
                 </Card>
               );
@@ -124,25 +131,42 @@ export default function DashboardPage() {
         </div>
       </section>
 
-      <section>
+      <section className="animate-fade-in">
         <Card>
           <CardHeader>
             <CardTitle>Recent Questions</CardTitle>
             <CardDescription>The latest five additions to your archive.</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
-            {status === "loading" ? <p className="text-sm text-slate-400">Checking session...</p> : null}
-            {isLoading ? <p className="text-sm text-slate-400">Loading questions...</p> : null}
+          <CardContent className="space-y-3">
+            {status === "loading" ? (
+              <div className="space-y-3">
+                {Array.from({ length: 3 }, (_, i) => (
+                  <div key={i} className="skeleton h-20 w-full" />
+                ))}
+              </div>
+            ) : null}
+            {isLoading ? (
+              <div className="space-y-3">
+                {Array.from({ length: 3 }, (_, i) => (
+                  <div key={i} className="skeleton h-20 w-full" />
+                ))}
+              </div>
+            ) : null}
             {error ? <p className="text-sm text-rose-300">{error}</p> : null}
             {!isLoading && recentQuestions.length === 0 ? (
-              <p className="text-sm text-slate-400">
-                No questions saved yet. Add your first problem from the quick-add bar above.
-              </p>
+              <div className="flex flex-col items-center gap-3 py-8 text-center">
+                <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-4">
+                  <Plus className="h-6 w-6 text-slate-500" />
+                </div>
+                <p className="text-sm text-slate-400">
+                  No questions saved yet. Add your first problem from the quick-add bar above.
+                </p>
+              </div>
             ) : null}
-            {recentQuestions.map((question) => (
+            {recentQuestions.map((question, index) => (
               <div
                 key={question.id}
-                className="flex flex-col gap-3 rounded-2xl border border-slate-800 bg-slate-950/50 p-4 md:flex-row md:items-center md:justify-between"
+                className={`group flex flex-col gap-3 rounded-2xl border border-slate-800 bg-slate-950/50 p-4 transition-all duration-200 hover:border-slate-700 hover:bg-slate-900/60 md:flex-row md:items-center md:justify-between animate-fade-in delay-${(index + 1) * 100}`}
               >
                 <div className="space-y-2">
                   <div className="flex flex-wrap items-center gap-2">
@@ -158,9 +182,9 @@ export default function DashboardPage() {
                       {question.platform}
                     </Badge>
                   </div>
-                  <p className="text-sm text-slate-400">{question.summary}</p>
+                  <p className="text-sm text-slate-400 line-clamp-1">{question.summary}</p>
                 </div>
-                <div className="text-sm text-slate-400">
+                <div className="whitespace-nowrap text-sm text-slate-500">
                   {formatDate(question.dateAdded)}
                 </div>
               </div>
@@ -169,7 +193,7 @@ export default function DashboardPage() {
         </Card>
       </section>
 
-      <section>
+      <section className="animate-fade-in">
         <PlatformAccountsSection />
       </section>
     </div>
