@@ -31,10 +31,10 @@ export function QuestionTable({
   onViewHints
 }: QuestionTableProps) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80">
+    <div className="overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/80">
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-slate-800 text-left text-sm">
-          <thead className="bg-slate-950/70 text-slate-400">
+        <table className="min-w-full divide-y divide-slate-800/80 text-left text-sm">
+          <thead className="bg-slate-950/80 text-slate-400">
             <tr>
               {[
                 "#",
@@ -57,7 +57,7 @@ export function QuestionTable({
           </thead>
           <tbody className="divide-y divide-slate-800">
             {questions.map((question, index) => (
-              <tr key={question.id} className="transition hover:bg-slate-950/50">
+              <tr key={question.id} className="transition-colors duration-150 hover:bg-slate-950/60">
                 <td className="px-4 py-4 text-slate-400">{index + 1}</td>
                 <td className="min-w-[260px] px-4 py-4">
                   <div className="space-y-2">

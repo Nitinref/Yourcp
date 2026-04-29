@@ -14,12 +14,12 @@ export interface ButtonProps
 
 const variantClasses: Record<ButtonVariant, string> = {
   default:
-    "bg-zinc-100 text-zinc-950 hover:bg-white shadow-[0_0_24px_rgba(255,255,255,0.08)]",
+    "bg-cyan-500 text-slate-950 hover:bg-cyan-400 shadow-[0_0_24px_rgba(6,182,212,0.22)] hover:shadow-[0_0_32px_rgba(6,182,212,0.3)]",
   outline:
-    "border border-zinc-700 bg-zinc-900 text-zinc-100 hover:border-zinc-400 hover:text-white",
+    "border border-slate-700 bg-slate-900 text-slate-100 hover:border-cyan-400 hover:text-cyan-300 hover:shadow-[0_0_16px_rgba(6,182,212,0.08)]",
   ghost: "bg-transparent text-slate-200 hover:bg-slate-800/80",
   danger:
-    "bg-zinc-700 text-white hover:bg-zinc-600 shadow-[0_0_24px_rgba(0,0,0,0.45)]"
+    "bg-rose-500/90 text-white hover:bg-rose-500 shadow-[0_0_24px_rgba(244,63,94,0.18)] hover:shadow-[0_0_32px_rgba(244,63,94,0.25)]"
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -34,7 +34,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     <button
       ref={ref}
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 disabled:pointer-events-none disabled:opacity-50",
+        "inline-flex items-center justify-center gap-2 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.97]",
         variantClasses[variant],
         sizeClasses[size],
         className

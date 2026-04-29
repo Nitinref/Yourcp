@@ -43,7 +43,7 @@ export function FilterBar({
   ].filter(Boolean) as string[];
 
   return (
-    <div className="glass-panel space-y-4 p-4">
+    <div className="glass-panel space-y-4 p-5">
       <div className="flex items-center gap-2 text-sm font-medium text-slate-300">
         <SlidersHorizontal className="h-4 w-4 text-zinc-200" />
         Filter and sort your archive
@@ -115,7 +115,7 @@ export function FilterBar({
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-3 border-t border-slate-800/40 pt-4 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-wrap items-center gap-2">
           <select
             value={sortBy}

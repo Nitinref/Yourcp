@@ -144,10 +144,10 @@ export default function TrackerPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between animate-fade-in">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-white">Tracker</h1>
-          <p className="text-slate-400">
+          <h1 className="text-3xl font-extrabold tracking-tight gradient-text">Tracker</h1>
+          <p className="mt-1 text-slate-400">
             Search, filter, edit inline, and export your full problem archive.
           </p>
         </div>
@@ -203,10 +203,18 @@ export default function TrackerPage() {
       </div>
 
       {status === "loading" ? (
-        <div className="glass-panel p-6 text-sm text-slate-400">Checking session...</div>
+        <div className="space-y-3">
+          {Array.from({ length: 4 }, (_, i) => (
+            <div key={i} className="skeleton h-16 w-full" />
+          ))}
+        </div>
       ) : null}
       {isLoading ? (
-        <div className="glass-panel p-6 text-sm text-slate-400">Loading tracker...</div>
+        <div className="space-y-3">
+          {Array.from({ length: 4 }, (_, i) => (
+            <div key={i} className="skeleton h-16 w-full" />
+          ))}
+        </div>
       ) : null}
       {error ? (
         <div className="glass-panel border-zinc-500/30 p-6 text-sm text-zinc-200">
@@ -215,8 +223,13 @@ export default function TrackerPage() {
       ) : null}
 
       {!isLoading && filteredQuestions.length === 0 ? (
-        <div className="glass-panel p-8 text-center text-slate-400">
-          No questions match the current filters yet.
+        <div className="glass-panel flex flex-col items-center gap-3 p-12 text-center">
+          <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-4">
+            <Table2 className="h-6 w-6 text-slate-500" />
+          </div>
+          <p className="text-slate-400">
+            No questions match the current filters yet.
+          </p>
         </div>
       ) : null}
 
@@ -232,7 +245,7 @@ export default function TrackerPage() {
       ) : null}
 
       {!isLoading && filteredQuestions.length > 0 && view === "card" ? (
-        <div className="grid gap-4 xl:grid-cols-2">
+        <div className="grid gap-5 xl:grid-cols-2">
           {filteredQuestions.map((question) => (
             <QuestionCard
               key={question.id}
