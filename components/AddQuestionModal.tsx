@@ -332,7 +332,7 @@ export function AddQuestionModal({
                       onClick={() => toggleTopic(topic)}
                       className={
                         active
-                          ? "rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-100"
+                          ? "rounded-full border border-zinc-500/30 bg-zinc-300/10 px-3 py-1 text-xs font-medium text-zinc-100"
                           : "rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs font-medium text-slate-300"
                       }
                     >
@@ -407,7 +407,7 @@ export function AddQuestionModal({
                     confidence: Number(event.target.value)
                   }))
                 }
-                className="mt-3 w-full accent-cyan-400"
+                className="mt-3 w-full accent-zinc-300"
               />
             </FormField>
             <FormField label="Understood">

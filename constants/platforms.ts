@@ -15,19 +15,19 @@ export const statusOptions = ["Unsolved", "Attempted", "Solved"] as const;
 export const understoodOptions = ["Yes", "No", "Partially"] as const;
 
 export const platformColors: Record<Platform, string> = {
-  LeetCode: "border-orange-500/30 bg-orange-500/10 text-orange-200",
-  Codeforces: "border-blue-500/30 bg-blue-500/10 text-blue-200",
-  CodeChef: "border-amber-700/40 bg-amber-700/10 text-amber-200",
-  AtCoder: "border-cyan-500/30 bg-cyan-500/10 text-cyan-200",
-  HackerRank: "border-emerald-500/30 bg-emerald-500/10 text-emerald-200",
-  GeeksforGeeks: "border-lime-500/30 bg-lime-500/10 text-lime-200",
-  Other: "border-slate-500/30 bg-slate-500/10 text-slate-200"
+  LeetCode: "border-zinc-500/30 bg-zinc-500/10 text-zinc-100",
+  Codeforces: "border-zinc-500/30 bg-zinc-500/10 text-zinc-100",
+  CodeChef: "border-zinc-500/30 bg-zinc-500/10 text-zinc-100",
+  AtCoder: "border-zinc-500/30 bg-zinc-500/10 text-zinc-100",
+  HackerRank: "border-zinc-500/30 bg-zinc-500/10 text-zinc-100",
+  GeeksforGeeks: "border-zinc-500/30 bg-zinc-500/10 text-zinc-100",
+  Other: "border-zinc-500/30 bg-zinc-500/10 text-zinc-100"
 };
 
 export const difficultyColors = {
-  Easy: "border-emerald-500/30 bg-emerald-500/10 text-emerald-200",
-  Medium: "border-amber-500/30 bg-amber-500/10 text-amber-200",
-  Hard: "border-rose-500/30 bg-rose-500/10 text-rose-200"
+  Easy: "border-zinc-600/40 bg-zinc-600/10 text-zinc-200",
+  Medium: "border-zinc-500/40 bg-zinc-500/10 text-zinc-100",
+  Hard: "border-zinc-400/40 bg-zinc-400/10 text-white"
 } as const;
 
 export const connectablePlatforms = platforms.filter(

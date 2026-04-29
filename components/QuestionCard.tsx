@@ -32,7 +32,7 @@ export function QuestionCard({
   onViewHints
 }: QuestionCardProps) {
   return (
-    <Card className="overflow-hidden transition hover:-translate-y-1 hover:border-cyan-500/40">
+    <Card className="overflow-hidden transition hover:-translate-y-1 hover:border-zinc-400/40">
       <CardContent className="space-y-4 p-5">
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">
@@ -41,12 +41,12 @@ export function QuestionCard({
                 href={question.url || "#"}
                 target="_blank"
                 rel="noreferrer"
-                className="text-lg font-semibold text-slate-100 transition hover:text-cyan-300"
+                className="text-lg font-semibold text-slate-100 transition hover:text-zinc-200"
               >
                 {question.title}
               </a>
               {question.isFavorite ? (
-                <Heart className="h-4 w-4 fill-cyan-400 text-cyan-300" />
+                <Heart className="h-4 w-4 fill-zinc-200 text-zinc-200" />
               ) : null}
             </div>
             <p className="text-sm text-slate-400">{question.summary}</p>
@@ -147,7 +147,7 @@ export function QuestionCard({
               <Heart
                 className={
                   question.isFavorite
-                    ? "h-4 w-4 fill-cyan-400 text-cyan-300"
+                    ? "h-4 w-4 fill-zinc-200 text-zinc-200"
                     : "h-4 w-4"
                 }
               />

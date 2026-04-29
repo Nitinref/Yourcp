@@ -45,7 +45,7 @@ export function FilterBar({
   return (
     <div className="glass-panel space-y-4 p-4">
       <div className="flex items-center gap-2 text-sm font-medium text-slate-300">
-        <SlidersHorizontal className="h-4 w-4 text-cyan-300" />
+        <SlidersHorizontal className="h-4 w-4 text-zinc-200" />
         Filter and sort your archive
       </div>
 
@@ -152,7 +152,7 @@ export function FilterBar({
           {activeFilters.map((item) => (
             <Badge
               key={item}
-              className="border-cyan-500/20 bg-cyan-500/10 text-cyan-100"
+              className="border-zinc-500/20 bg-zinc-300/10 text-zinc-100"
             >
               {item}
             </Badge>

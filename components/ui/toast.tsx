@@ -40,11 +40,11 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             className={cn(
               "rounded-2xl border px-4 py-3 shadow-2xl backdrop-blur",
               item.variant === "success" &&
-                "border-emerald-500/40 bg-emerald-500/10 text-emerald-100",
+                "border-white/20 bg-white/10 text-white",
               item.variant === "error" &&
-                "border-rose-500/40 bg-rose-500/10 text-rose-100",
+                "border-zinc-500/40 bg-zinc-700/40 text-zinc-100",
               (!item.variant || item.variant === "default") &&
-                "border-cyan-500/40 bg-slate-900/90 text-slate-100"
+                "border-white/15 bg-black/85 text-slate-100"
             )}
           >
             <div className="flex items-start gap-3">

@@ -66,12 +66,12 @@ export function QuestionTable({
                         href={question.url || "#"}
                         target="_blank"
                         rel="noreferrer"
-                        className="font-semibold text-slate-100 transition hover:text-cyan-300"
+                        className="font-semibold text-slate-100 transition hover:text-zinc-200"
                       >
                         {question.title}
                       </a>
                       {question.isFavorite ? (
-                        <Heart className="h-4 w-4 fill-cyan-400 text-cyan-300" />
+                        <Heart className="h-4 w-4 fill-zinc-200 text-zinc-200" />
                       ) : null}
                     </div>
                     <p className="max-w-sm text-xs text-slate-400">
@@ -185,7 +185,7 @@ export function QuestionTable({
                       <Heart
                         className={
                           question.isFavorite
-                            ? "h-4 w-4 fill-cyan-400 text-cyan-300"
+                            ? "h-4 w-4 fill-zinc-200 text-zinc-200"
                             : "h-4 w-4"
                         }
                       />

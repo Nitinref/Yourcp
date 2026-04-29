@@ -60,7 +60,7 @@ export default function DashboardPage() {
       <section className="glass-panel overflow-hidden p-6 md:p-8">
         <div className="grid gap-8 xl:grid-cols-[1.4fr,0.9fr]">
           <div className="space-y-5">
-            <div className="inline-flex rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-1 text-xs font-medium uppercase tracking-[0.25em] text-cyan-200">
+            <div className="inline-flex rounded-full border border-zinc-500/20 bg-zinc-300/10 px-4 py-1 text-xs font-medium uppercase tracking-[0.25em] text-zinc-300">
               Dashboard
             </div>
             <div className="space-y-2">
@@ -111,8 +111,8 @@ export default function DashboardPage() {
                   <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
                       <CardDescription>{stat.label}</CardDescription>
-                      <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/10 p-2">
-                        <Icon className="h-4 w-4 text-cyan-300" />
+                      <div className="rounded-xl border border-zinc-500/20 bg-zinc-300/10 p-2">
+                        <Icon className="h-4 w-4 text-zinc-200" />
                       </div>
                     </div>
                     <CardTitle className="text-3xl">{stat.value}</CardTitle>
@@ -133,7 +133,7 @@ export default function DashboardPage() {
           <CardContent className="space-y-4">
             {status === "loading" ? <p className="text-sm text-slate-400">Checking session...</p> : null}
             {isLoading ? <p className="text-sm text-slate-400">Loading questions...</p> : null}
-            {error ? <p className="text-sm text-rose-300">{error}</p> : null}
+            {error ? <p className="text-sm text-zinc-200">{error}</p> : null}
             {!isLoading && recentQuestions.length === 0 ? (
               <p className="text-sm text-slate-400">
                 No questions saved yet. Add your first problem from the quick-add bar above.
@@ -150,7 +150,7 @@ export default function DashboardPage() {
                       href={question.url || "#"}
                       target="_blank"
                       rel="noreferrer"
-                      className="font-semibold text-slate-100 transition hover:text-cyan-300"
+                      className="font-semibold text-slate-100 transition hover:text-zinc-200"
                     >
                       {question.title}
                     </a>

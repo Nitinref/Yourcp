@@ -52,7 +52,7 @@ export function HintDrawer({
                 <CardContent className="space-y-3 p-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-sm font-medium text-slate-200">
-                      <Lightbulb className="h-4 w-4 text-cyan-300" />
+                      <Lightbulb className="h-4 w-4 text-zinc-200" />
                       Hint {index + 1}
                     </div>
                     {!visible ? (

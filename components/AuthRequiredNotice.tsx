@@ -13,8 +13,8 @@ export function AuthRequiredNotice({
 }) {
   return (
     <div className="glass-panel flex flex-col items-center gap-4 p-8 text-center">
-      <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-3">
-        <LockKeyhole className="h-5 w-5 text-cyan-300" />
+      <div className="rounded-2xl border border-zinc-500/20 bg-zinc-300/10 p-3">
+        <LockKeyhole className="h-5 w-5 text-zinc-200" />
       </div>
       <div className="space-y-2">
         <h2 className="text-xl font-semibold text-white">{title}</h2>

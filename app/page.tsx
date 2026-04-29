@@ -30,20 +30,15 @@ export default function HomePage() {
   return (
     <div className="space-y-10">
       <section className="glass-panel overflow-hidden p-8 md:p-12">
-        <div className="max-w-3xl space-y-6">
-          <div className="inline-flex rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-1 text-xs font-medium uppercase tracking-[0.3em] text-cyan-200">
-            CodeTracker Pro
-          </div>
-          <div className="space-y-4">
-            <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-white md:text-6xl">
-              The original control center for your competitive programming grind.
-            </h1>
-            <p className="max-w-2xl text-balance text-lg text-slate-300">
-              Manage every problem you solve, revisit, and almost solve with AI-assisted
-              analysis, database-backed persistence, flexible filters, and live stats.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
+        <div className="max-w-3xl space-y-5">
+          <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+            Turn practice into an interview-ready system
+          </h2>
+          <p className="max-w-2xl text-lg text-slate-300">
+            Keep each problem, mistake pattern, and revision signal in one workflow.
+            Analyze with AI, track confidence, and export clean sheets whenever needed.
+          </p>
+          <div className="flex flex-wrap gap-3 pt-2">
             <Link href="/dashboard">
               <Button size="lg">
                 Open Dashboard
@@ -63,10 +58,10 @@ export default function HomePage() {
         {featureCards.map((card) => {
           const Icon = card.icon;
           return (
-            <Card key={card.title} className="transition hover:-translate-y-1 hover:border-cyan-500/40">
+            <Card key={card.title} className="transition hover:-translate-y-1 hover:border-zinc-400/40">
               <CardHeader>
-                <div className="mb-4 inline-flex w-fit rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-3">
-                  <Icon className="h-5 w-5 text-cyan-300" />
+                <div className="mb-4 inline-flex w-fit rounded-2xl border border-zinc-500/20 bg-zinc-300/10 p-3">
+                  <Icon className="h-5 w-5 text-zinc-200" />
                 </div>
                 <CardTitle>{card.title}</CardTitle>
                 <CardDescription>{card.description}</CardDescription>

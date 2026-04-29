@@ -9,7 +9,7 @@ import { Question } from "@/types";
 export function ExportButton({ questions }: { questions: Question[] }) {
   const { toast } = useToast();
 
-  const handleExport = () => {
+  const handleExport = async () => {
     if (questions.length === 0) {
       toast({
         title: "Nothing to export",
@@ -19,12 +19,21 @@ export function ExportButton({ questions }: { questions: Question[] }) {
       return;
     }
 
-    exportToExcel(questions);
-    toast({
-      title: "Export complete",
-      description: `${questions.length} questions were exported to Excel.`,
-      variant: "success"
-    });
+    try {
+      await exportToExcel(questions);
+      toast({
+        title: "Export complete",
+        description: `${questions.length} questions were exported to Excel.`,
+        variant: "success"
+      });
+    } catch (error) {
+      toast({
+        title: "Export failed",
+        description:
+          error instanceof Error ? error.message : "Unable to generate the Excel sheet.",
+        variant: "error"
+      });
+    }
   };
 
   return (

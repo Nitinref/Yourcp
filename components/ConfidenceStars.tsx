@@ -35,7 +35,7 @@ export function ConfidenceStars({
               className={cn(
                 "h-full w-full",
                 active
-                  ? "fill-cyan-400 text-cyan-300"
+                  ? "fill-zinc-200 text-zinc-200"
                   : "text-slate-600"
               )}
             />

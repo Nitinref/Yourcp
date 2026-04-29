@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { LayoutGrid, Table2 } from "lucide-react";
 import { AddQuestionModal } from "@/components/AddQuestionModal";
 import { AuthRequiredNotice } from "@/components/AuthRequiredNotice";
@@ -9,6 +10,7 @@ import { FilterBar } from "@/components/FilterBar";
 import { HintDrawer } from "@/components/HintDrawer";
 import { QuestionCard } from "@/components/QuestionCard";
 import { QuestionTable } from "@/components/QuestionTable";
+import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/components/ui/toast";
 import { predefinedTopics } from "@/constants/topics";
@@ -151,6 +153,9 @@ export default function TrackerPage() {
         </div>
         <div className="flex flex-wrap gap-3">
           <AddQuestionModal />
+          <Link href="/make-your-own-sheet">
+            <Button variant="outline">Make Your Own Sheet</Button>
+          </Link>
           <ExportButton questions={filteredQuestions} />
         </div>
       </div>
@@ -204,7 +209,7 @@ export default function TrackerPage() {
         <div className="glass-panel p-6 text-sm text-slate-400">Loading tracker...</div>
       ) : null}
       {error ? (
-        <div className="glass-panel border-rose-500/20 p-6 text-sm text-rose-300">
+        <div className="glass-panel border-zinc-500/30 p-6 text-sm text-zinc-200">
           {error}
         </div>
       ) : null}

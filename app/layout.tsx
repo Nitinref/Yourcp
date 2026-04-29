@@ -18,9 +18,13 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className="font-sans">
         <AppProviders>
-          <div className="min-h-screen bg-grid-glow">
+          <div className="app-surface relative min-h-screen overflow-x-hidden">
+            <div className="app-grid-overlay fixed inset-0 z-0" />
+
             <Navbar />
-            <main className="mx-auto max-w-7xl px-4 py-8 md:px-6">{children}</main>
+            <main className="relative z-10 mx-auto max-w-7xl px-4 pb-10 pt-8 md:px-6 md:pt-10">
+              {children}
+            </main>
           </div>
         </AppProviders>
       </body>

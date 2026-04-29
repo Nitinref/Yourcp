@@ -165,8 +165,8 @@ export function PlatformAccountsSection() {
                     <Badge
                       className={
                         support === "official"
-                          ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-200"
-                          : "border-amber-500/20 bg-amber-500/10 text-amber-200"
+                          ? "border-zinc-500/20 bg-zinc-300/10 text-zinc-200"
+                          : "border-zinc-500/20 bg-zinc-300/10 text-zinc-200"
                       }
                     >
                       {support === "official" ? "✓ Sync Enabled" : "Coming Soon"}
@@ -177,7 +177,7 @@ export function PlatformAccountsSection() {
                       href={account.profileUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-sm text-cyan-300 transition hover:text-cyan-200"
+                      className="text-sm text-zinc-200 transition hover:text-zinc-300"
                     >
                       Open profile
                     </a>
@@ -226,13 +226,13 @@ export function PlatformAccountsSection() {
                 {account ? (
                   <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-slate-400">
                     <span className="inline-flex items-center gap-1">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-cyan-300" />
+                      <CheckCircle2 className="h-3.5 w-3.5 text-zinc-200" />
                       Status: {account.syncStatus}
                     </span>
                     <span>
                       Last synced: {account.lastSyncedAt ? new Date(account.lastSyncedAt).toLocaleString() : "Never"}
                     </span>
-                    {account.lastError ? <span className="text-rose-300">Last error: {account.lastError}</span> : null}
+                    {account.lastError ? <span className="text-zinc-200">Last error: {account.lastError}</span> : null}
                   </div>
                 ) : (
                   <p className="mt-3 text-xs text-slate-500">

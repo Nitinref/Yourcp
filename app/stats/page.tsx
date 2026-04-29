@@ -49,7 +49,7 @@ export default function StatsPage() {
         <div className="glass-panel p-6 text-sm text-slate-400">Loading stats...</div>
       ) : null}
       {error ? (
-        <div className="glass-panel border-rose-500/20 p-6 text-sm text-rose-300">
+        <div className="glass-panel border-zinc-500/30 p-6 text-sm text-zinc-200">
           {error}
         </div>
       ) : null}
